@@ -345,7 +345,7 @@ graph TB
         C_Server["Central Server"]
         C_Connections["N^2 connections through server"]
         C_Bandwidth["Server Bandwidth: O of N squared"]
-        C_Cost["Monthly Cost: $$$$$"]
+        C_Cost["Monthly Cost: Expensive"]
         
         C_Users --> C_Server
         C_Server --> C_Connections
