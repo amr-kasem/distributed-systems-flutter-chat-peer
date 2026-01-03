@@ -57,7 +57,7 @@ sequenceDiagram
         Platform-->>User: App ready
     end
     
-    Note right of Platform: Distributed Systems Concepts:<br/>• Platform-agnostic initialization<br/>• Reactive state propagation<br/>• Asynchronous bootstrapping<br/>• Stream-based data flow
+    Note right of Platform: Distributed Systems Concepts:<br/>- Platform-agnostic initialization<br/>- Reactive state propagation<br/>- Asynchronous bootstrapping<br/>- Stream-based data flow
 ```
 
 **Distributed Systems Principles**:
@@ -113,7 +113,7 @@ sequenceDiagram
         WidgetB-->>UserB: Show contact request dialog
     end
     
-    Note right of ProviderB: Distributed Systems Concepts:<br/>• Publish-subscribe decoupling<br/>• Reactive state propagation<br/>• Asynchronous messaging<br/>• Platform-agnostic UI updates
+    Note right of ProviderB: Distributed Systems Concepts:<br/>- Publish-subscribe decoupling<br/>- Reactive state propagation<br/>- Asynchronous messaging<br/>- Platform-agnostic UI updates
 ```
 
 **Distributed Systems Principles**:
@@ -199,7 +199,7 @@ sequenceDiagram
         NativeB->>PeerB: onConnectionStateChange(connected)
     end
     
-    Note right of NativeB: Distributed Systems Concepts:<br/>• Platform abstraction<br/>• Two-phase protocol<br/>• Reliable signaling<br/>• Cross-platform WebRTC
+    Note right of NativeB: Distributed Systems Concepts:<br/>- Platform abstraction<br/>- Two-phase protocol<br/>- Reliable signaling<br/>- Cross-platform WebRTC
 ```
 
 **Distributed Systems Principles**:
@@ -270,7 +270,7 @@ sequenceDiagram
         WidgetA-->>UserA: Show checkmark
     end
     
-    Note right of DriftB: Distributed Systems Concepts:<br/>• Reactive streams<br/>• Type-safe database<br/>• Eventually consistent<br/>• Local-first architecture
+    Note right of DriftB: Distributed Systems Concepts:<br/>- Reactive streams<br/>- Type-safe database<br/>- Eventually consistent<br/>- Local-first architecture
 ```
 
 **Distributed Systems Principles**:
@@ -349,7 +349,7 @@ sequenceDiagram
         end
     end
     
-    Note right of Platform: Distributed Systems Concepts:<br/>• Platform-aware failures<br/>• Exponential backoff<br/>• Automatic recovery<br/>• Message queuing
+    Note right of Platform: Distributed Systems Concepts:<br/>- Platform-aware failures<br/>- Exponential backoff<br/>- Automatic recovery<br/>- Message queuing
 ```
 
 **Distributed Systems Principles**:
@@ -419,16 +419,16 @@ sequenceDiagram
     
     rect rgb(227, 242, 253)
         Note over PeerA,PeerB: Phase 4: Cross-Platform Connection
-        Note over PeerA,PeerB: Android ↔ iOS connection established
+        Note over PeerA,PeerB: Android to iOS connection established
     end
     
-    Note right of PeerB: Distributed Systems Concepts:<br/>• Platform-independent consensus<br/>• Deterministic algorithm<br/>• No central coordinator<br/>• Cross-platform compatibility
+    Note right of PeerB: Distributed Systems Concepts:<br/>- Platform-independent consensus<br/>- Deterministic algorithm<br/>- No central coordinator<br/>- Cross-platform compatibility
 ```
 
 **Distributed Systems Principles**:
 - **Platform Independence**: Same algorithm on Android and iOS
 - **Distributed Consensus**: No coordinator needed
-- **Deterministic**: Same inputs → same outcome
+- **Deterministic**: Same inputs -> same outcome
 - **Cross-Platform**: Works between any platform combination
 
 ---
@@ -506,7 +506,7 @@ sequenceDiagram
         end
     end
     
-    Note right of Drift: Distributed Systems Concepts:<br/>• Reactive streams<br/>• Type-safe queries<br/>• Partition tolerance<br/>• Eventual consistency
+    Note right of Drift: Distributed Systems Concepts:<br/>- Reactive streams<br/>- Type-safe queries<br/>- Partition tolerance<br/>- Eventual consistency
 ```
 
 **Distributed Systems Principles**:
@@ -574,7 +574,7 @@ sequenceDiagram
         NodeB->>PlatformB: Update UI (online)
     end
     
-    Note right of PlatformB: Distributed Systems Concepts:<br/>• Platform-aware heartbeat<br/>• Lifecycle management<br/>• Adaptive intervals<br/>• Soft state
+    Note right of PlatformB: Distributed Systems Concepts:<br/>- Platform-aware heartbeat<br/>- Lifecycle management<br/>- Adaptive intervals<br/>- Soft state
 ```
 
 **Distributed Systems Principles**:

@@ -140,7 +140,7 @@ This directory contains academic documentation for the Flutter/Dart implementati
 
 ### 4. Cross-Platform Consensus
 - **Platform-Independent**: Polite peer pattern works between any platforms
-- **Deterministic**: Android ↔ iOS, Web ↔ Desktop, etc.
+- **Deterministic**: Android <-> iOS, Web <-> Desktop, etc.
 - **No Coordinator**: Peers resolve conflicts independently
 
 ---
