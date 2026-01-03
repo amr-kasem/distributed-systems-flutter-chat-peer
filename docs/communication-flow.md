@@ -176,8 +176,8 @@ sequenceDiagram
 
 ```mermaid
 sequenceDiagram
-    participant A as Peer A (Polite)
-    participant B as Peer B (Impolite)
+    participant A as "Peer A (Polite)"
+    participant B as "Peer B (Impolite)"
     
     Note over A,B: Simultaneous Offers (Glare)
     
@@ -190,16 +190,16 @@ sequenceDiagram
     Note over A: Receives offer while waiting
     
     A->>A: rollback()
-    A->>A: setRemoteDescription(B's offer)
+    A->>A: setRemoteDescription(B offer)
     A->>A: createAnswer()
     A->>B: Send answer
     
     Note over B: Receives offer while waiting
     
-    B->>B: Ignore A's offer
+    B->>B: Ignore A offer
     B->>A: Wait for answer
     
-    B->>B: setRemoteDescription(A's answer)
+    B->>B: setRemoteDescription(A answer)
     
     Note over A,B: Connection established
 ```
