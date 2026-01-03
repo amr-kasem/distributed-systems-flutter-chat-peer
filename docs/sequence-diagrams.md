@@ -194,7 +194,7 @@ sequenceDiagram
     
     rect rgb(200, 230, 201)
         Note over PeerA,PeerB: Phase 5: Direct P2P Connection
-        NativeA<->>NativeB: WebRTC Connection Established
+        Note over NativeA,NativeB: WebRTC Connection Established
         NativeA->>PeerA: onConnectionStateChange(connected)
         NativeB->>PeerB: onConnectionStateChange(connected)
     end
@@ -419,7 +419,7 @@ sequenceDiagram
     
     rect rgb(227, 242, 253)
         Note over PeerA,PeerB: Phase 4: Cross-Platform Connection
-        PeerA<->>PeerB: Android ↔ iOS connection established
+        Note over PeerA,PeerB: Android ↔ iOS connection established
     end
     
     Note right of PeerB: Distributed Systems Concepts:<br/>• Platform-independent consensus<br/>• Deterministic algorithm<br/>• No central coordinator<br/>• Cross-platform compatibility
