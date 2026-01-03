@@ -25,7 +25,7 @@ sequenceDiagram
     User->>Platform: Launch app
     Platform->>Flutter: Initialize Flutter engine
     
-    rect rgb(255, 249, 196)
+    rect rgb("255, 249, 196")
         Note over Flutter,Riverpod: Phase 1: State Initialization
         Flutter->>Riverpod: Initialize providers
         Riverpod->>Coord: Create ChatCoordinator
@@ -33,7 +33,7 @@ sequenceDiagram
         Coord->>Drift: Initialize database
     end
     
-    rect rgb(227, 242, 253)
+    rect rgb("227, 242, 253")
         Note over Coord,MQTT: Phase 2: Connect to Discovery Service
         Coord->>MQTT: connect(userId)
         MQTT->>MQTT: Platform-specific WebSocket
@@ -41,7 +41,7 @@ sequenceDiagram
         MQTT->>MQTT: Subscribe to user/{userId}/*
     end
     
-    rect rgb(200, 230, 201)
+    rect rgb("200, 230, 201")
         Note over Coord,Drift: Phase 3: Load Local State
         Coord->>Drift: Load contacts
         Drift-->>Coord: Stream<List<Contact>>
@@ -49,7 +49,7 @@ sequenceDiagram
         Drift-->>Coord: Stream<List<Message>>
     end
     
-    rect rgb(255, 224, 178)
+    rect rgb("255, 224, 178")
         Note over Riverpod,User: Phase 4: Reactive UI Update
         Coord->>Riverpod: Notify state change
         Riverpod->>Flutter: Rebuild widgets
@@ -88,22 +88,22 @@ sequenceDiagram
     
     Note over UserA,UserB: Reactive Distributed Peer Discovery
     
-    rect rgb(255, 249, 196)
+    rect rgb("255, 249, 196")
         Note over UserA,CoordA: Initiator Side (Peer A)
         UserA->>WidgetA: Tap "Add Contact"
         WidgetA->>ProviderA: ref.read(coordinator).addContact()
-        ProviderA->>CoordA: addContact(peerB_id, name)
+        ProviderA->>CoordA: addContact("peerB_id, name")
         CoordA->>CoordA: Create contact request
         CoordA->>MQTT_A: sendSignalingMessage()
         MQTT_A->>Broker: PUBLISH user/peerB/contactRequest
     end
     
-    rect rgb(255, 224, 178)
+    rect rgb("255, 224, 178")
         Note over Broker: Message Routing (O(1) lookup)
         Broker->>Broker: Route to subscribers
     end
     
-    rect rgb(227, 242, 253)
+    rect rgb("227, 242, 253")
         Note over MQTT_B,UserB: Receiver Side (Peer B)
         Broker->>MQTT_B: FORWARD contactRequest
         MQTT_B->>CoordB: onSignalingMessage()
@@ -140,7 +140,7 @@ sequenceDiagram
     
     Note over PeerA,PeerB: Cross-Platform WebRTC Negotiation
     
-    rect rgb(255, 249, 196)
+    rect rgb("255, 249, 196")
         Note over PeerA,NativeA: Phase 1: Offer Creation
         PeerA->>NativeA: createOffer() via Method Channel
         NativeA->>NativeA: Platform WebRTC: createOffer()
@@ -150,12 +150,12 @@ sequenceDiagram
         SignalA->>Broker: PUBLISH user/peerB/offer
     end
     
-    rect rgb(255, 224, 178)
+    rect rgb("255, 224, 178")
         Note over Broker: Reliable Delivery (QoS 1)
         Broker->>SignalB: FORWARD offer (with ACK)
     end
     
-    rect rgb(227, 242, 253)
+    rect rgb("227, 242, 253")
         Note over SignalB,PeerB: Phase 2: Answer Creation
         SignalB->>PeerB: Deliver offer
         PeerB->>PeerB: setRemoteDescription(offer)
@@ -167,14 +167,14 @@ sequenceDiagram
         SignalB->>Broker: PUBLISH user/peerA/answer
     end
     
-    rect rgb(200, 230, 201)
+    rect rgb("200, 230, 201")
         Note over Broker,PeerA: Phase 3: Answer Delivery
         Broker->>SignalA: FORWARD answer
         SignalA->>PeerA: Deliver answer
         PeerA->>PeerA: setRemoteDescription(answer)
     end
     
-    rect rgb(255, 249, 196)
+    rect rgb("255, 249, 196")
         Note over PeerA,PeerB: Phase 4: ICE Candidate Exchange
         
         par ICE Gathering (Parallel)
@@ -192,7 +192,7 @@ sequenceDiagram
         end
     end
     
-    rect rgb(200, 230, 201)
+    rect rgb("200, 230, 201")
         Note over PeerA,PeerB: Phase 5: Direct P2P Connection
         Note over NativeA,NativeB: WebRTC Connection Established
         NativeA->>PeerA: onConnectionStateChange(connected)
@@ -230,7 +230,7 @@ sequenceDiagram
     
     Note over UserA,UserB: Reactive Distributed Message Delivery
     
-    rect rgb(255, 249, 196)
+    rect rgb("255, 249, 196")
         Note over UserA,DriftA: Phase 1: Local Processing (Peer A)
         UserA->>WidgetA: Type message "Hello"
         WidgetA->>ProviderA: ref.read(coordinator).sendMessage()
@@ -243,13 +243,13 @@ sequenceDiagram
         WidgetA-->>UserA: Show message (sending...)
     end
     
-    rect rgb(255, 224, 178)
+    rect rgb("255, 224, 178")
         Note over CoordA,WebRTC: Phase 2: P2P Transmission
         CoordA->>WebRTC: Send via DTLS/SCTP
         Note over WebRTC: Direct P2P<br/>No broker<br/>Low latency
     end
     
-    rect rgb(227, 242, 253)
+    rect rgb("227, 242, 253")
         Note over WebRTC,UserB: Phase 3: Remote Processing (Peer B)
         WebRTC->>CoordB: onMessage("Hello")
         CoordB->>CoordB: Validate message
@@ -260,7 +260,7 @@ sequenceDiagram
         WidgetB-->>UserB: Display "Hello"
     end
     
-    rect rgb(200, 230, 201)
+    rect rgb("200, 230, 201")
         Note over CoordB,UserA: Phase 4: Acknowledgment
         CoordB->>WebRTC: Send ACK
         WebRTC->>CoordA: Deliver ACK
@@ -297,7 +297,7 @@ sequenceDiagram
     
     Note over Platform,Drift: Cross-Platform Failure Handling
     
-    rect rgb(255, 205, 210)
+    rect rgb("255, 205, 210")
         Note over Platform: Platform-Specific Event
         Platform->>Flutter: Network change detected
         Flutter->>Coord: onNetworkChange()
@@ -306,7 +306,7 @@ sequenceDiagram
         Coord->>Coord: Detect failure
     end
     
-    rect rgb(255, 249, 196)
+    rect rgb("255, 249, 196")
         Note over Coord,Retry: Exponential Backoff Algorithm
         Coord->>Retry: Start retry sequence
         Coord->>Drift: Queue pending messages
@@ -340,7 +340,7 @@ sequenceDiagram
         end
     end
     
-    rect rgb(255, 205, 210)
+    rect rgb("255, 205, 210")
         Note over Retry,Platform: Max Retries Reached
         alt Max Retries Exceeded
             Retry->>Coord: Give up
@@ -371,7 +371,7 @@ sequenceDiagram
     
     Note over PeerA,PeerB: Cross-Platform Glare Resolution
     
-    rect rgb(255, 249, 196)
+    rect rgb("255, 249, 196")
         Note over PeerA,PeerB: Phase 1: Simultaneous Offers
         
         par Both create offers
@@ -389,7 +389,7 @@ sequenceDiagram
         end
     end
     
-    rect rgb(255, 205, 210)
+    rect rgb("255, 205, 210")
         Note over PeerA,PeerB: Phase 2: Glare Detection
         
         PeerA->>PeerA: Receive offer_B (unexpected)
@@ -399,7 +399,7 @@ sequenceDiagram
         PeerB->>PeerB: GLARE DETECTED!
     end
     
-    rect rgb(200, 230, 201)
+    rect rgb("200, 230, 201")
         Note over PeerA,PeerB: Phase 3: Platform-Independent Resolution
         
         PeerA->>PeerA: Compare: "alice" < "bob"
@@ -417,7 +417,7 @@ sequenceDiagram
         PeerB->>PeerB: setRemoteDescription(answer_A)
     end
     
-    rect rgb(227, 242, 253)
+    rect rgb("227, 242, 253")
         Note over PeerA,PeerB: Phase 4: Cross-Platform Connection
         Note over PeerA,PeerB: Android to iOS connection established
     end
@@ -448,7 +448,7 @@ sequenceDiagram
     
     Note over User,Network: Reactive Offline Operation
     
-    rect rgb(200, 230, 201)
+    rect rgb("200, 230, 201")
         Note over User,Network: Normal Operation
         User->>Widget: Send message 1
         Widget->>Provider: ref.read(coordinator).sendMessage()
@@ -463,12 +463,12 @@ sequenceDiagram
         Provider->>Widget: Rebuild with checkmark
     end
     
-    rect rgb(255, 205, 210)
+    rect rgb("255, 205, 210")
         Note over Network: Network Partition Occurs
         Network->>Network: Connection lost
     end
     
-    rect rgb(255, 249, 196)
+    rect rgb("255, 249, 196")
         Note over User,Drift: Offline Mode (Reactive Queuing)
         User->>Widget: Send message 2
         Widget->>Provider: ref.read(coordinator).sendMessage()
@@ -491,7 +491,7 @@ sequenceDiagram
         Note over Drift: Type-safe query:<br/>SELECT * WHERE status = 'pending'
     end
     
-    rect rgb(227, 242, 253)
+    rect rgb("227, 242, 253")
         Note over Network: Network Restored
         Network->>Coord: Connection restored
         Coord->>Drift: watchPendingMessages()
@@ -531,7 +531,7 @@ sequenceDiagram
     
     Note over PlatformA,PlatformB: Cross-Platform Liveness Detection
     
-    rect rgb(200, 230, 201)
+    rect rgb("200, 230, 201")
         Note over PlatformA,NodeA: Mobile App Active
         PlatformA->>NodeA: App in foreground
         NodeA->>NodeA: Start heartbeat timer (30s)
@@ -544,7 +544,7 @@ sequenceDiagram
         end
     end
     
-    rect rgb(255, 249, 196)
+    rect rgb("255, 249, 196")
         Note over PlatformA: Mobile App Backgrounded
         PlatformA->>NodeA: App lifecycle: paused
         NodeA->>NodeA: Reduce heartbeat (60s)
@@ -553,7 +553,7 @@ sequenceDiagram
         NodeB->>PlatformB: Update UI (away)
     end
     
-    rect rgb(255, 205, 210)
+    rect rgb("255, 205, 210")
         Note over NodeA: Network Issue
         NodeA->>NodeA: Heartbeat fails
         
@@ -564,7 +564,7 @@ sequenceDiagram
         NodeB->>PlatformB: Update UI (offline)
     end
     
-    rect rgb(227, 242, 253)
+    rect rgb("227, 242, 253")
         Note over PlatformA: Mobile App Resumed
         PlatformA->>NodeA: App lifecycle: resumed
         NodeA->>NodeA: Resume normal heartbeat (30s)

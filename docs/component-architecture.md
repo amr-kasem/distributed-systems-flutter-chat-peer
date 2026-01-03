@@ -12,7 +12,7 @@ graph TB
     end
     
     subgraph "State Management (Riverpod)"
-        Providers[Riverpod Providers]
+        Providers["Riverpod Providers"]
         StateNotifiers[StateNotifiers]
     end
     
@@ -34,8 +34,8 @@ graph TB
     end
     
     subgraph "Infrastructure Layer"
-        Drift[(Drift Database<br/>SQLite)]
-        MQTT[MQTT Broker]
+        Drift["(Drift Database<br/>SQLite)"]
+        MQTT["MQTT Broker"]
         WebRTC[WebRTC]
     end
     
@@ -79,41 +79,41 @@ graph TB
 
 ```mermaid
 graph TB
-    MaterialApp[MaterialApp<br/>Root Widget]
+    MaterialApp["MaterialApp<br/>Root Widget"]
     
-    MaterialApp --> Home[Home Screen]
+    MaterialApp --> Home["Home Screen"]
     
-    Home --> Row[Row Layout]
+    Home --> Row["Row Layout"]
     
-    Row --> Sidebar[Sidebar Widget]
-    Row --> ChatView[ChatView Widget]
+    Row --> Sidebar["Sidebar Widget"]
+    Row --> ChatView["ChatView Widget"]
     
-    Sidebar --> UserInfo[User Info Card]
-    Sidebar --> AddButton[Add Contact Button]
-    Sidebar --> ContactList[Contact ListView]
+    Sidebar --> UserInfo["User Info Card"]
+    Sidebar --> AddButton["Add Contact Button"]
+    Sidebar --> ContactList["Contact ListView"]
     
-    ContactList --> ContactTile1[Contact Tile]
-    ContactList --> ContactTile2[Contact Tile]
+    ContactList --> ContactTile1["Contact Tile"]
+    ContactList --> ContactTile2["Contact Tile"]
     ContactList --> ContactTileN[...]
     
     ContactTile1 --> Avatar[CircleAvatar]
-    ContactTile1 --> Info[Contact Info]
-    ContactTile1 --> Status[Status Indicator]
+    ContactTile1 --> Info["Contact Info"]
+    ContactTile1 --> Status["Status Indicator"]
     
-    ChatView --> AppBar[Chat AppBar]
-    ChatView --> Messages[Message ListView]
-    ChatView --> Input[Input Row]
+    ChatView --> AppBar["Chat AppBar"]
+    ChatView --> Messages["Message ListView"]
+    ChatView --> Input["Input Row"]
     
-    AppBar --> Title[Contact Name]
-    AppBar --> StatusBadge[Connection Status]
+    AppBar --> Title["Contact Name"]
+    AppBar --> StatusBadge["Connection Status"]
     
-    Messages --> MessageBubble1[Message Bubble]
-    Messages --> MessageBubble2[Message Bubble]
+    Messages --> MessageBubble1["Message Bubble"]
+    Messages --> MessageBubble2["Message Bubble"]
     Messages --> MessageBubbleN[...]
     
-    MessageBubble1 --> Content[Text Content]
+    MessageBubble1 --> Content["Text Content"]
     MessageBubble1 --> Time[Timestamp]
-    MessageBubble1 --> StatusIcon[Status Icon]
+    MessageBubble1 --> StatusIcon["Status Icon"]
     
     Input --> TextField[TextField]
     Input --> SendButton[IconButton]
@@ -164,11 +164,11 @@ class _ChatViewState extends ConsumerState<ChatView> {
 ```mermaid
 graph TB
     subgraph "Providers"
-        CoordProvider[coordinatorProvider<br/>Provider]
-        ContactsProvider[contactsProvider<br/>StreamProvider]
-        MessagesProvider[messagesProvider<br/>StreamProvider]
-        StatusProvider[connectionStatusProvider<br/>StateProvider]
-        SelectedProvider[selectedContactProvider<br/>StateProvider]
+        CoordProvider["coordinatorProvider<br/>Provider"]
+        ContactsProvider["contactsProvider<br/>StreamProvider"]
+        MessagesProvider["messagesProvider<br/>StreamProvider"]
+        StatusProvider["connectionStatusProvider<br/>StateProvider"]
+        SelectedProvider["selectedContactProvider<br/>StateProvider"]
     end
     
     subgraph "Services"
@@ -285,7 +285,7 @@ graph TB
     Coordinator --> MsgRepo
     Coordinator --> ContactRepo
     
-    Coordinator --> |Events| UI[UI via Providers]
+    Coordinator --> |Events| UI["UI via Providers"]
     
     style Coordinator fill:#4fc3f7
 ```
@@ -317,10 +317,10 @@ graph TB
     Signaling[SignalingService]
     
     Signaling --> Client[MqttServerClient]
-    Signaling --> Queue[Message Queue]
+    Signaling --> Queue["Message Queue"]
     Signaling --> Reconnect[ReconnectionManager]
     
-    Client --> Broker[MQTT Broker]
+    Client --> Broker["MQTT Broker"]
     Queue --> |flush| Client
     Reconnect --> Client
     
@@ -371,8 +371,8 @@ graph TB
     
     WebRTC --> PC[RTCPeerConnection]
     WebRTC --> DC[RTCDataChannel]
-    WebRTC --> ICE[ICE Handler]
-    WebRTC --> Buffer[Candidate Buffer]
+    WebRTC --> ICE["ICE Handler"]
+    WebRTC --> Buffer["Candidate Buffer"]
     
     PC --> Offer[createOffer]
     PC --> Answer[createAnswer]
@@ -447,15 +447,15 @@ graph TB
     MsgRepo --> Update[updateMessageStatus]
     MsgRepo --> Pending[getPendingMessages]
     
-    Save --> Drift[Drift Database]
+    Save --> Drift["Drift Database"]
     Get --> Drift
     Watch --> Drift
     Update --> Drift
     Pending --> Drift
     
-    Drift --> Stream[Stream<List<Message>>]
-    Stream --> Provider[Riverpod Provider]
-    Provider --> Widget[Flutter Widget]
+    Drift --> Stream["Stream<List<Message>>"]
+    Stream --> Provider["Riverpod Provider"]
+    Provider --> Widget["Flutter Widget"]
     
     style MsgRepo fill:#ba68c8
 ```
@@ -530,16 +530,16 @@ graph TB
     ContactRepo --> Delete[softDelete]
     ContactRepo --> Watch[watchAll]
     
-    GetAll --> Drift[Drift Database]
+    GetAll --> Drift["Drift Database"]
     Get --> Drift
     Add --> Drift
     Update --> Drift
     Delete --> Drift
     Watch --> Drift
     
-    Drift --> Stream[Stream<List<Contact>>]
-    Stream --> Provider[Riverpod Provider]
-    Provider --> Widget[Flutter Widget]
+    Drift --> Stream["Stream<List<Contact>>"]
+    Stream --> Provider["Riverpod Provider"]
+    Provider --> Widget["Flutter Widget"]
     
     style ContactRepo fill:#ba68c8
 ```
@@ -610,7 +610,7 @@ sequenceDiagram
 ```mermaid
 graph TB
     subgraph "Dart Layer"
-        FlutterApp[Flutter App]
+        FlutterApp["Flutter App"]
         Services[Services]
     end
     
@@ -620,9 +620,9 @@ graph TB
     end
     
     subgraph "Native Layer"
-        Android[Android Kotlin/Java]
-        iOS[iOS Swift/Obj-C]
-        Desktop[Desktop C++]
+        Android["Android Kotlin/Java"]
+        iOS["iOS Swift/Obj-C"]
+        Desktop["Desktop C++"]
     end
     
     FlutterApp --> Services

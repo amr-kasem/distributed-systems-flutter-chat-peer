@@ -12,24 +12,24 @@
 ```mermaid
 graph TB
     subgraph "Flutter Chat Application System"
-        UC1[Register/Login]
-        UC2[Add Contact]
-        UC3[Accept Contact Request]
-        UC4[Decline Contact Request]
-        UC5[Remove Contact]
-        UC6[Send Message]
-        UC7[Receive Message]
-        UC8[View Message History]
-        UC9[Establish P2P Connection]
-        UC10[Monitor Connection Status]
-        UC11[Reconnect on Failure]
-        UC12[View Contact List]
-        UC13[Sync Across Devices]
+        UC1["Register/Login"]
+        UC2["Add Contact"]
+        UC3["Accept Contact Request"]
+        UC4["Decline Contact Request"]
+        UC5["Remove Contact"]
+        UC6["Send Message"]
+        UC7["Receive Message"]
+        UC8["View Message History"]
+        UC9["Establish P2P Connection"]
+        UC10["Monitor Connection Status"]
+        UC11["Reconnect on Failure"]
+        UC12["View Contact List"]
+        UC13["Sync Across Devices"]
     end
     
-    UserA((User A))
-    UserB((User B))
-    MQTT[MQTT Broker]
+    UserA("(User A"))
+    UserB("(User B"))
+    MQTT["MQTT Broker"]
     WebRTC[WebRTC]
     
     UserA --> UC1
@@ -228,11 +228,11 @@ graph TB
 ### Riverpod State Management
 ```mermaid
 graph LR
-    Widget[Flutter Widget] -->|watch| Provider[Riverpod Provider]
+    Widget["Flutter Widget"] -->|watch| Provider["Riverpod Provider"]
     Provider -->|notify| Widget
-    Provider --> Service[Service Layer]
+    Provider --> Service["Service Layer"]
     Service --> Repository[Repository]
-    Repository --> Drift[Drift Database]
+    Repository --> Drift["Drift Database"]
 ```
 
 ### Reactive UI Updates
@@ -251,11 +251,11 @@ graph LR
 
 ```mermaid
 graph LR
-    UserA[User A<br/>Flutter App] -->|uses| System[Chat System]
-    UserB[User B<br/>Flutter App] -->|uses| System
-    System -->|signaling| MQTT[MQTT Broker]
+    UserA["User A<br/>Flutter App"] -->|uses| System["Chat System"]
+    UserB["User B<br/>Flutter App"] -->|uses| System
+    System -->|signaling| MQTT["MQTT Broker"]
     System -->|data transfer| WebRTC[WebRTC]
-    System -->|persistence| Drift[Drift Database]
+    System -->|persistence| Drift["Drift Database"]
     
     style System fill:#4fc3f7
     style MQTT fill:#ffb74d

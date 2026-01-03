@@ -21,10 +21,10 @@ This application is a **hybrid distributed system** with:
 ```mermaid
 graph TB
     subgraph "Distributed System Components"
-        PeerMobile[Peer Node<br/>Mobile Device]
-        PeerDesktop[Peer Node<br/>Desktop Computer]
-        PeerWeb[Peer Node<br/>Web Browser]
-        Broker[MQTT Broker<br/>Signaling Coordinator]
+        PeerMobile["Peer Node<br/>Mobile Device"]
+        PeerDesktop["Peer Node<br/>Desktop Computer"]
+        PeerWeb["Peer Node<br/>Web Browser"]
+        Broker["MQTT Broker<br/>Signaling Coordinator"]
     end
     
     PeerMobile <-->|Direct P2P<br/>WebRTC| PeerDesktop

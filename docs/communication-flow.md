@@ -9,24 +9,24 @@ The Flutter P2P chat application uses the same hybrid communication model as the
 ```mermaid
 graph TB
     subgraph "Flutter Application Layer"
-        Widgets[Flutter Widgets]
-        Riverpod[Riverpod State]
-        Services[Service Layer]
+        Widgets["Flutter Widgets"]
+        Riverpod["Riverpod State"]
+        Services["Service Layer"]
     end
     
     subgraph "Transport Layer"
-        MQTT[MQTT Client<br/>mqtt_client package]
-        WebRTC[Flutter WebRTC<br/>flutter_webrtc package]
+        MQTT["MQTT Client<br/>mqtt_client package"]
+        WebRTC["Flutter WebRTC<br/>flutter_webrtc package"]
     end
     
     subgraph "Persistence Layer"
-        Drift[Drift Database<br/>SQLite]
+        Drift["Drift Database<br/>SQLite"]
     end
     
     subgraph "Network Layer"
-        Broker[MQTT Broker]
-        STUN[STUN Server]
-        TURN[TURN Server]
+        Broker["MQTT Broker"]
+        STUN["STUN Server"]
+        TURN["TURN Server"]
     end
     
     Widgets --> Riverpod
@@ -51,19 +51,19 @@ graph TB
 ```mermaid
 graph TB
     MaterialApp[MaterialApp]
-    MaterialApp --> ChatView[ChatView Widget]
-    ChatView --> Sidebar[Sidebar Widget]
-    ChatView --> ChatArea[Chat Area]
+    MaterialApp --> ChatView["ChatView Widget"]
+    ChatView --> Sidebar["Sidebar Widget"]
+    ChatView --> ChatArea["Chat Area"]
     
-    Sidebar --> ContactList[Contact List]
-    ContactList --> ContactTile1[Contact Tile]
-    ContactList --> ContactTile2[Contact Tile]
+    Sidebar --> ContactList["Contact List"]
+    ContactList --> ContactTile1["Contact Tile"]
+    ContactList --> ContactTile2["Contact Tile"]
     
-    ChatArea --> MessageList[Message ListView]
+    ChatArea --> MessageList["Message ListView"]
     ChatArea --> InputField[TextField]
     
-    MessageList --> MessageBubble1[Message Bubble]
-    MessageList --> MessageBubble2[Message Bubble]
+    MessageList --> MessageBubble1["Message Bubble"]
+    MessageList --> MessageBubble2["Message Bubble"]
     
     style ChatView fill:#4fc3f7
     style Sidebar fill:#81c784
@@ -121,7 +121,7 @@ sequenceDiagram
     participant UserB as User B Widget
     
     UserA->>ProviderA: Tap send contact request
-    ProviderA->>CoordA: addContact(peerId, name)
+    ProviderA->>CoordA: addContact("peerId, name")
     CoordA->>MQTT_A: sendSignalingMessage()
     MQTT_A->>Broker: PUBLISH user/B/contactRequest
     Broker->>MQTT_B: FORWARD contactRequest
@@ -190,7 +190,7 @@ sequenceDiagram
     Note over A: Receives offer while waiting
     
     A->>A: rollback()
-    A->>A: setRemoteDescription(B offer)
+    A->>A: setRemoteDescription("B offer")
     A->>A: createAnswer()
     A->>B: Send answer
     
@@ -199,7 +199,7 @@ sequenceDiagram
     B->>B: Ignore A offer
     B->>A: Wait for answer
     
-    B->>B: setRemoteDescription(A answer)
+    B->>B: setRemoteDescription("A answer")
     
     Note over A,B: Connection established
 ```
@@ -283,7 +283,7 @@ sequenceDiagram
     Coord->>MsgSvc: sendMessage(content)
     
     MsgSvc->>MsgSvc: Create Message with UUID
-    MsgSvc->>Drift: saveMessage(status: pending)
+    MsgSvc->>Drift: saveMessage("status: pending")
     Drift-->>MsgSvc: Saved
     
     MsgSvc->>WebRTC: sendMessage(content)
@@ -393,11 +393,11 @@ sequenceDiagram
 
 ```mermaid
 graph TB
-    FlutterApp[Flutter App]
-    FlutterApp --> MethodChannel[Method Channel]
-    MethodChannel --> AndroidCode[Android Native Code]
-    AndroidCode --> WebRTC[WebRTC Android]
-    AndroidCode --> MQTT[MQTT Android]
+    FlutterApp["Flutter App"]
+    FlutterApp --> MethodChannel["Method Channel"]
+    MethodChannel --> AndroidCode["Android Native Code"]
+    AndroidCode --> WebRTC["WebRTC Android"]
+    AndroidCode --> MQTT["MQTT Android"]
     
     style FlutterApp fill:#4fc3f7
     style AndroidCode fill:#81c784
@@ -407,11 +407,11 @@ graph TB
 
 ```mermaid
 graph TB
-    FlutterApp[Flutter App]
-    FlutterApp --> MethodChannel[Method Channel]
-    MethodChannel --> iOSCode[iOS Native Code]
-    iOSCode --> WebRTC[WebRTC iOS]
-    iOSCode --> MQTT[MQTT iOS]
+    FlutterApp["Flutter App"]
+    FlutterApp --> MethodChannel["Method Channel"]
+    MethodChannel --> iOSCode["iOS Native Code"]
+    iOSCode --> WebRTC["WebRTC iOS"]
+    iOSCode --> MQTT["MQTT iOS"]
     
     style FlutterApp fill:#4fc3f7
     style iOSCode fill:#81c784
@@ -421,11 +421,11 @@ graph TB
 
 ```mermaid
 graph TB
-    FlutterApp[Flutter App]
-    FlutterApp --> FFI[Dart FFI]
-    FFI --> NativeLib[Native Libraries]
-    NativeLib --> WebRTC[WebRTC Native]
-    NativeLib --> MQTT[MQTT Native]
+    FlutterApp["Flutter App"]
+    FlutterApp --> FFI["Dart FFI"]
+    FFI --> NativeLib["Native Libraries"]
+    NativeLib --> WebRTC["WebRTC Native"]
+    NativeLib --> MQTT["MQTT Native"]
     
     style FlutterApp fill:#4fc3f7
     style NativeLib fill:#81c784
@@ -435,11 +435,11 @@ graph TB
 
 ```mermaid
 graph TB
-    FlutterApp[Flutter Web App]
-    FlutterApp --> JSInterop[JS Interop]
-    JSInterop --> WebAPI[Web APIs]
-    WebAPI --> WebRTC[WebRTC Browser]
-    WebAPI --> WebSocket[WebSocket MQTT]
+    FlutterApp["Flutter Web App"]
+    FlutterApp --> JSInterop["JS Interop"]
+    JSInterop --> WebAPI["Web APIs"]
+    WebAPI --> WebRTC["WebRTC Browser"]
+    WebAPI --> WebSocket["WebSocket MQTT"]
     
     style FlutterApp fill:#4fc3f7
     style WebAPI fill:#81c784
@@ -488,19 +488,19 @@ sequenceDiagram
 ```mermaid
 graph TB
     subgraph "Application Layer"
-        Message[Plain Text Message]
+        Message["Plain Text Message"]
     end
     
     subgraph "Flutter WebRTC"
-        DTLS[DTLS Encryption<br/>flutter_webrtc]
+        DTLS["DTLS Encryption<br/>flutter_webrtc"]
     end
     
     subgraph "Flutter MQTT"
-        TLS[TLS/WSS<br/>mqtt_client]
+        TLS["TLS/WSS<br/>mqtt_client"]
     end
     
     subgraph "Local Storage"
-        Encryption[SQLite Encryption<br/>Optional]
+        Encryption["SQLite Encryption<br/>Optional"]
     end
     
     Message --> DTLS
